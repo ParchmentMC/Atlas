@@ -1,0 +1,5 @@
+apiVersion: v2
+name: discord-redirector-extras
+description: The resources that define the discord redirector service
+type: application
+version: 1.0.0

@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: discord-redirector
+  namespace: argocd
+spec:
+  project: parchment
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: parchment-discord-redirector
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  sources:
+    - repoURL: {{ .Values.repository.url }}
+      path: parchment-charts/discord-redirector-extras
+      targetRevision: HEAD
