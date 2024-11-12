@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: discord-redirector
+  name: parchment-discord-redirector
   namespace: argocd
 spec:
   project: parchment
