@@ -15,7 +15,7 @@ spec:
       - CreateNamespace=true
   sources:
     - repoURL: https://ldtteam.github.io/keeweb
-      chart: website
+      chart: keeweb
       targetRevision: "1.*"
       helm:
         releaseName: parchment-keeweb
