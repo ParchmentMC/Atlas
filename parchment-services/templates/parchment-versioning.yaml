@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: parchment-versioning
+  namespace: argocd
+spec:
+  project: parchment
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: parchment-versioning
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  sources:
+    - repoURL: https://parchmentmc.github.io/SmithingTable/
+      chart: website
+      targetRevision: "0.*"
+      helm:
+        releaseName: parchment-versioning
