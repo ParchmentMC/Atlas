@@ -23,7 +23,17 @@ metadata:
       add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type' always;
 spec:
   rules:
-    - host: maven-new.parchmentmc.net
+    - host: maven.parchmentmc.net
+      http:
+        paths:
+          - path: /(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: parchment-maven
+                port:
+                  number: 443
+    - host: maven.parchmentmc.org
       http:
         paths:
           - path: /(.*)
@@ -35,5 +45,6 @@ spec:
                   number: 443
   tls:
     - hosts:
-        - maven-new.parchmentmc.net
+        - maven.parchmentmc.net
+        - maven.parchmentmc.org
       secretName: maven-tls
