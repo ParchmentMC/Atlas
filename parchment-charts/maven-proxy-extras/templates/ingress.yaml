@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: discord-redirect-ingress
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: letsencrypt-parchment
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: "/artifactory/parchmentmc-public$1"
+    external-dns.alpha.kubernetes.io/target: "cluster.ldtteam.com."
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  rules:
+    - host: maven-new.parchmentmc.net
+      http:
+        paths:
+          - path: (.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: parchment-maven
+                port:
+                  number: 443
+  tls:
+    - hosts:
+        - maven-new.parchmentmc.net
+      secretName: maven-tls

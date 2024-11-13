@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: parchment-maven-proxy
+  namespace: argocd
+spec:
+  project: parchment
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: parchment-maven-proxy
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  sources:
+    - repoURL: {{ .Values.repository.url }}
+      path: parchment-charts/maven-proxy-extras
+      targetRevision: HEAD
