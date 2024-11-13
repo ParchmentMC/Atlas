@@ -16,7 +16,7 @@ spec:
     - host: maven-new.parchmentmc.net
       http:
         paths:
-          - path: (.*)
+          - path: /(.*)
             pathType: ImplementationSpecific
             backend:
               service:
