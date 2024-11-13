@@ -15,7 +15,7 @@ spec:
       - CreateNamespace=true
   sources:
     - repoURL: https://parchmentmc.github.io/SmithingTable/
-      chart: SmithingTable
+      chart: smithing-table
       targetRevision: "0.*"
       helm:
         releaseName: parchment-versioning
