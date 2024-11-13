@@ -14,7 +14,7 @@ spec:
     syncOptions:
       - CreateNamespace=true
   sources:
-    - repoURL: https://parchmentmc.github.io/website
+    - repoURL: https://parchmentmc.github.io/Website
       chart: website
       targetRevision: "0.*"
       helm:
