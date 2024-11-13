@@ -8,6 +8,7 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-parchment
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/rewrite-target: "https://discord.gg/XXHhhPRUxs"
+    external-dns.alpha.kubernetes.io/target: "cluster.ldtteam.com."
 spec:
   rules:
     - host: discord.parchmentmc.net
