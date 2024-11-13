@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: parchment-website
+  namespace: argocd
+spec:
+  project: parchment
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: parchment-website
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  sources:
+    - repoURL: https://parchmentmc.github.io/website
+      chart: website
+      targetRevision: "0.*"
+      helm:
+        releaseName: parchment-website
