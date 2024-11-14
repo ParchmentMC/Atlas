@@ -22,7 +22,7 @@ spec:
         valuesObject:
           persistence:
             labels:
-              recurring-job-group.longhorn.io/high-frequency: enabled
+              recurring-job-group.longhorn.io/high-frequency: "enabled"
           ingress:
             enabled: true
             annotations:
