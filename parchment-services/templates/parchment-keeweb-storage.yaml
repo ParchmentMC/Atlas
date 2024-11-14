@@ -36,7 +36,10 @@ spec:
             auth:
               enabled: true
               secretRef:
-                name: keeweb-auth
+                name: storage-credentials
               realm: "Parchment FileShare"
           autoscaling:
             enabled: true
+    - repoURL: {{ .Values.repository.url }}
+      path: parchment-charts/parchment-keeweb-storage-extras
+      targetRevision: HEAD
