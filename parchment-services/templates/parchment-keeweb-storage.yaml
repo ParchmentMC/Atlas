@@ -33,7 +33,10 @@ spec:
             hosts:
               - fileshare-new.parchmentmc.net
               - fileshare-new.parchmentmc.org
+            auth:
+              enabled: true
+              secretRef:
+                name: keeweb-auth
+              realm: "Parchment FileShare"
           autoscaling:
             enabled: true
-
-
